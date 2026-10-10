@@ -1,3 +1,4 @@
+
 const emissionFactors = {
   electricity: 0.70,
   transport: 0.12,
