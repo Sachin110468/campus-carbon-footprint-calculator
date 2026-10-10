@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123f32">
+  <title>Campus Carbon Footprint Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <div class="brand-mark">♧</div>
+    <p class="brand-kicker">SUSTAINABLE CAMPUS • SMARTER FUTURE</p>
+    <h1>Campus Carbon Footprint Calculator</h1>
+    <p class="header-subtitle">A digital system for estimating and monitoring campus carbon emissions</p>
+  </div>
+  <div class="header-orb orb-one"></div>
+  <div class="header-orb orb-two"></div>
+</header>
+
+<nav class="navbar">
+  <div class="nav-brand"><span class="nav-leaf">✳</span> GreenCampus</div>
+  <div class="nav-links">
+    <button class="nav-button active" onclick="showSection('home')">Home</button>
+    <button class="nav-button" onclick="showSection('calculator')">Carbon Calculator</button>
+    <button class="nav-button" onclick="showSection('results')">Results</button>
+    <button class="nav-button" onclick="showSection('about')">About Project</button>
+  </div>
+</nav>
+
+<main>
+  <section id="home" class="section active">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="small-title"><span class="eyebrow-dot"></span> CAMPUS SUSTAINABILITY</p>
+        <h2>Calculate Your Campus <span>Carbon Footprint</span></h2>
+        <p class="hero-description">
+          Understand the environmental impact of everyday campus activities.
+          Estimate emissions from electricity, transportation, fuel, paper and waste
+          in one simple dashboard.
+        </p>
+        <div class="hero-actions">
+          <button class="primary-button" onclick="showSection('calculator')">
+            Start Calculation <span>↗</span>
+          </button>
+          <button class="text-button" onclick="showSection('about')">
+            Explore the project →
+          </button>
+        </div>
+        <div class="trust-note">✓ Simple inputs · Clear estimates · Better awareness</div>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-topline"><span class="status-dot"></span> YOUR CAMPUS IMPACT</div>
+        <div class="carbon-icon">CO<sub>2</sub><span>e</span></div>
+        <h3>Every action counts.</h3>
+        <p>Activity Data <span class="formula-times">×</span> Emission Factor</p>
+        <div class="hero-card-bottom">
+          <span>Estimated footprint</span>
+          <strong><span id="heroPreview">0.00</span> <small>kg CO₂e</small></strong>
+        </div>
+        <div class="decor-leaf leaf-a">✳</div>
+        <div class="decor-leaf leaf-b">✦</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      <div>
+        <p class="small-title">WHAT WE MEASURE</p>
+        <h2>Five areas. One clearer picture.</h2>
+      </div>
+      <p>Track the main activity categories included in this prototype.</p>
+    </div>
+
+    <div class="info-grid">
+      <article class="info-card">
+        <div class="category-icon electricity-icon">ϟ</div>
+        <span class="card-index">01</span>
+        <h3>Electricity</h3>
+        <p>Estimate emissions from campus electricity consumption.</p>
+        <span class="card-accent"></span>
+      </article>
+      <article class="info-card">
+        <div class="category-icon transport-icon">↗</div>
+        <span class="card-index">02</span>
+        <h3>Transportation</h3>
+        <p>Estimate emissions from campus-related travel distance.</p>
+        <span class="card-accent"></span>
+      </article>
+      <article class="info-card">
+        <div class="category-icon fuel-icon">◉</div>
+        <span class="card-index">03</span>
+        <h3>Fuel</h3>
+        <p>Calculate emissions associated with fuel consumption.</p>
+        <span class="card-accent"></span>
+      </article>
+      <article class="info-card">
+        <div class="category-icon waste-icon">♻</div>
+        <span class="card-index">04–05</span>
+        <h3>Paper & Waste</h3>
+        <p>Include paper use and waste generation in the assessment.</p>
+        <span class="card-accent"></span>
+      </article>
+    </div>
+
+    <div class="home-callout">
+      <div class="callout-icon">↗</div>
+      <div>
+        <h3>Turn data into awareness</h3>
+        <p>Enter activity data to view a category-wise estimate.</p>
+      </div>
+      <button class="outline-button" onclick="showSection('calculator')">Open calculator →</button>
+    </div>
+  </section>
+
+  <section id="calculator" class="section">
+    <div class="section-heading">
+      <p class="small-title">DATA COLLECTION</p>
+      <h2>Enter Campus Activity Data</h2>
+      <p>Enter values for the same assessment period. Use zero for categories with no available data.</p>
+    </div>
+
+    <div class="calculator-shell">
+      <div class="calculator-grid">
+        <div class="input-card">
+          <div class="input-card-heading"><span class="input-icon electricity-icon">ϟ</span><span class="input-step">01</span></div>
+          <h3>Electricity Consumption</h3>
+          <label for="electricity">Electricity used <span>(kWh)</span></label>
+          <input type="number" id="electricity" placeholder="e.g. 10000" min="0" step="any">
+          <span class="input-help">Unit: kilowatt-hours (kWh)</span>
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-heading"><span class="input-icon transport-icon">↗</span><span class="input-step">02</span></div>
+          <h3>Transportation</h3>
+          <label for="transport">Travel distance <span>(km)</span></label>
+          <input type="number" id="transport" placeholder="e.g. 2000" min="0" step="any">
+          <span class="input-help">Unit: kilometres (km)</span>
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-heading"><span class="input-icon fuel-icon">◉</span><span class="input-step">03</span></div>
+          <h3>Fuel Consumption</h3>
+          <label for="fuel">Fuel consumed <span>(litres)</span></label>
+          <input type="number" id="fuel" placeholder="e.g. 500" min="0" step="any">
+          <span class="input-help">Unit: litres</span>
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-heading"><span class="input-icon paper-icon">▤</span><span class="input-step">04</span></div>
+          <h3>Paper Consumption</h3>
+          <label for="paper">Paper used <span>(kg)</span></label>
+          <input type="number" id="paper" placeholder="e.g. 100" min="0" step="any">
+          <span class="input-help">Unit: kilograms (kg)</span>
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-heading"><span class="input-icon waste-icon">♻</span><span class="input-step">05</span></div>
+          <h3>Waste Generation</h3>
+          <label for="waste">Waste generated <span>(kg)</span></label>
+          <input type="number" id="waste" placeholder="e.g. 300" min="0" step="any">
+          <span class="input-help">Unit: kilograms (kg)</span>
+        </div>
+
+        <div class="input-side-note">
+          <span class="note-symbol">i</span>
+          <div>
+            <strong>Before you calculate</strong>
+            <p>Use data from a consistent time period. The current emission factors are demonstration values and need validation before formal reporting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-area">
+        <button class="primary-button" onclick="calculateCarbon()">Calculate Carbon Footprint →</button>
+        <button class="secondary-button" onclick="clearData()">Clear inputs</button>
+      </div>
+      <div id="calculation-message" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="results" class="section">
+    <div class="section-heading">
+      <p class="small-title">CARBON ASSESSMENT</p>
+      <h2>Carbon Footprint Results</h2>
+      <p>Review the estimated emissions for each activity category.</p>
+    </div>
+
+    <div class="total-card">
+      <div>
+        <p class="total-label">TOTAL ESTIMATED CAMPUS FOOTPRINT</p>
+        <h2 id="totalEmission">0.00 kg CO₂e</h2>
+        <p class="total-subtitle">Based on the activity values entered in the calculator</p>
+      </div>
+      <div class="total-badge">CO₂e</div>
+    </div>
+
+    <div class="results-grid">
+      <article class="result-card"><div class="result-card-top"><span class="result-dot electricity-icon"></span><span>01</span></div><h3>Electricity</h3><p id="electricityResult">0.00 kg CO₂e</p></article>
+      <article class="result-card"><div class="result-card-top"><span class="result-dot transport-icon"></span><span>02</span></div><h3>Transportation</h3><p id="transportResult">0.00 kg CO₂e</p></article>
+      <article class="result-card"><div class="result-card-top"><span class="result-dot fuel-icon"></span><span>03</span></div><h3>Fuel</h3><p id="fuelResult">0.00 kg CO₂e</p></article>
+      <article class="result-card"><div class="result-card-top"><span class="result-dot paper-icon"></span><span>04</span></div><h3>Paper</h3><p id="paperResult">0.00 kg CO₂e</p></article>
+      <article class="result-card"><div class="result-card-top"><span class="result-dot waste-icon"></span><span>05</span></div><h3>Waste</h3><p id="wasteResult">0.00 kg CO₂e</p></article>
+    </div>
+
+    <div class="result-note">
+      <div class="note-heading"><span class="note-symbol">i</span><h3>Calculation Method</h3></div>
+      <p>Carbon emissions are estimated using the formula:</p>
+      <div class="formula">Carbon Emission = Activity Data × Emission Factor</div>
+      <p>The emission factors used in this prototype are demonstration values and should be replaced with validated factors from documented sources before final project evaluation.</p>
+      <button class="outline-button" onclick="showSection('calculator')">Edit activity data →</button>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-heading">
+      <p class="small-title">B.TECH CAPSTONE PROJECT</p>
+      <h2>About the Project</h2>
+      <p>A prototype for understanding and estimating campus-related emissions.</p>
+    </div>
+
+    <div class="about-layout">
+      <div class="about-card">
+        <div class="about-block">
+          <span class="about-number">01</span>
+          <div><h3>Problem Statement</h3><p>Educational campuses generate carbon emissions through electricity consumption, transportation, fuel usage, paper consumption and waste generation. Without a structured mechanism to collect activity data and estimate emissions, it can be difficult to understand the overall campus carbon footprint and identify areas where emissions may be reduced.</p></div>
+        </div>
+        <div class="about-block">
+          <span class="about-number">02</span>
+          <div><h3>Proposed Solution</h3><p>The Campus Carbon Footprint Calculator is a digital prototype designed to collect relevant campus activity data and estimate associated carbon dioxide equivalent emissions. It presents category-wise estimates and an overall estimated campus footprint.</p></div>
+        </div>
+        <div class="about-block">
+          <span class="about-number">03</span>
+          <div><h3>Main Objectives</h3><ul><li>Collect relevant campus activity data.</li><li>Estimate emissions using emission factors.</li><li>Present category-wise carbon footprint information.</li><li>Calculate an overall estimated campus footprint.</li><li>Help identify major emission sources.</li></ul></div>
+        </div>
+        <div class="about-block">
+          <span class="about-number">04</span>
+          <div><h3>Project Scope</h3><p>The current prototype focuses on five measurable categories: electricity, transportation, fuel, paper and waste. Accuracy depends on the quality of activity data and the emission factors selected.</p></div>
+        </div>
+      </div>
+
+      <aside class="team-card">
+        <p class="small-title">PROJECT TEAM</p>
+        <h3>Meet the team</h3>
+        <div class="team-member"><span>AY</span><div><strong>Akash Yadav</strong><small>Team Member</small></div></div>
+        <div class="team-member"><span>AT</span><div><strong>Akshay Tyagi</strong><small>Team Member</small></div></div>
+        <div class="team-member"><span>SM</span><div><strong>Sachin Mishra</strong><small>Team Member</small></div></div>
+        <div class="team-member"><span>MB</span><div><strong>Mukesh Bhandari</strong><small>Team Member</small></div></div>
+        <div class="guide-box"><small>PROJECT GUIDE</small><strong>Komal Salgotra</strong></div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand"><span class="nav-leaf">✳</span> GreenCampus</div>
+  <p>Campus Carbon Footprint Calculator</p>
+  <span>B.Tech Capstone Project · Prototype</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
